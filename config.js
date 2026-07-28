@@ -39,10 +39,17 @@ const CONFIG = {
   DM_PRESENCE: process.env.DM_PRESENCE || '',
   GRP_PRESENCE: process.env.GRP_PRESENCE || '',
   USER_LID: parseLids(process.env.USER_LID || ''),
-  OWNER_NUMBER: process.env.OWNER_NUMBER || '',
-  OWNER_NAME: process.env.OWNER_NAME || 'Flash MD user',
-  BOT_NAME: process.env.BOT_NAME || 'Flash-Md-V3',
+  
+  // 🧑‍💻 YOUR CUSTOM BRANDING
+  OWNER_NUMBER: process.env.OWNER_NUMBER || '263714296550',
+  OWNER_NAME: process.env.OWNER_NAME || 'Sage Dickson',
+  BOT_NAME: process.env.BOT_NAME || 'Sage-Bot v3',
   BOT_VERSION: process.env.BOT_VERSION || '3.0.0',
+  
+  // 🏢 YOUR STUDIO & CREDITS
+  STUDIO_NAME: process.env.STUDIO_NAME || 'Digital Dynamo Lab',
+  CREDITS: process.env.CREDITS || 'Franceking',
+  
   MENU_IMAGES: parseMenuImages(process.env.MENU_IMAGES || '')
 }
 
