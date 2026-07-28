@@ -1,8 +1,8 @@
 {
-  "name": "Flash-MD3",
-  "description": "WhatsApp Multi-Device bot powered by Baileys",
-  "repository": "https://github.com/franceking1/Flash-Md-V3",
-  "keywords": ["whatsapp", "baileys", "bot", "flash-md"],
+  "name": "Sage-Bot-v3",
+  "description": "Sage-Bot v3 — Advanced WhatsApp Multi-Device Bot by Sage Dickson, Powered by Digital Dynamo Lab",
+  "repository": "https://github.com/Rockykid02/Sagebotv3",
+  "keywords": ["whatsapp", "baileys", "bot", "sage-bot", "digital-dynamo-lab"],
   "env": {
     "MODE": {
       "description": "Bot mode (private or public)",
@@ -16,16 +16,16 @@
     },
     "OWNER_NUMBER": {
       "description": "Owner phone number (no + or country code)",
-      "value": "",
+      "value": "263714296550",
       "required": false
     },
     "OWNER_NAME": {
-      "description": "Your name goes here",
-      "value": "",
+      "description": "Owner name",
+      "value": "Sage Dickson",
       "required": false
     },
     "SESSION": {
-      "description": "put your FLASH-MD session here",
+      "description": "Your Sage-Bot v3 session ID (get from session generator)",
       "required": true
     },
     "TZ": {
@@ -35,7 +35,7 @@
     },
     "ANTICALL": {
       "description": "Auto reject calls (on/off)",
-      "value": "off",
+      "value": "on",
       "required": false
     },
     "ANTIDELETE": {
@@ -74,8 +74,9 @@
       "required": false
     },
     "USER_LID": {
-      "description": "Put your lid here",
-      "required": true
+      "description": "Your LID (leave empty if you don't have one)",
+      "value": "",
+      "required": false
     }
   },
   "formation": {
