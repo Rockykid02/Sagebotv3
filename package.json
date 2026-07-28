@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node flash.js && node --loader ./preload.js index.js",
+    "start": "node index.js",
     "dev": "node index.js",
     "postinstall": "PUPPETEER_SKIP_DOWNLOAD=true npm rebuild sharp --force"
   },
