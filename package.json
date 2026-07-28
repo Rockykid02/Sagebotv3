@@ -1,7 +1,7 @@
 {
-  "name": "Flash-Md-V3",
+  "name": "sage-bot-v3",
   "version": "3.0.0",
-  "description": "Advanced WhatsApp Multi-Device Bot using Baileys",
+  "description": "Sage-Bot v3 — Advanced WhatsApp Multi-Device Bot by Sage Dickson, Powered by Digital Dynamo Lab",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,7 @@
     "node": ">=20.x <=24.x",
     "npm": ">=9.x"
   },
-  "author": "franceking1",
+  "author": "Sage Dickson (Digital Dynamo Lab) — Original Credits: franceking1",
   "license": "MIT",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
