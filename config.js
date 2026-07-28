@@ -25,7 +25,7 @@ function parseMenuImages(menuImagesStr) {
 }
 
 const CONFIG = {
-  MODE: process.env.MODE || 'private',
+  MODE: process.env.MODE || 'public',
   PREFIXES: parsePrefixes(process.env.PREFIXES),
   PORT: parseInt(process.env.PORT) || 3000,
   SESSION: process.env.SESSION || null,
@@ -39,17 +39,12 @@ const CONFIG = {
   DM_PRESENCE: process.env.DM_PRESENCE || '',
   GRP_PRESENCE: process.env.GRP_PRESENCE || '',
   USER_LID: parseLids(process.env.USER_LID || ''),
-  
-  // 🧑‍💻 YOUR CUSTOM BRANDING
-  OWNER_NUMBER: process.env.OWNER_NUMBER || '263714296550',
+  OWNER_NUMBER: process.env.OWNER_NUMBER || '263780597802',
   OWNER_NAME: process.env.OWNER_NAME || 'Sage Dickson',
   BOT_NAME: process.env.BOT_NAME || 'Sage-Bot v3',
   BOT_VERSION: process.env.BOT_VERSION || '3.0.0',
-  
-  // 🏢 YOUR STUDIO & CREDITS
   STUDIO_NAME: process.env.STUDIO_NAME || 'Digital Dynamo Lab',
   CREDITS: process.env.CREDITS || 'Franceking',
-  
   MENU_IMAGES: parseMenuImages(process.env.MENU_IMAGES || '')
 }
 
