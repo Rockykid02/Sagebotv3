@@ -30,6 +30,13 @@ global.ALLOWED_USERS = loadSudoList()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// 🧑‍💻 SAGE-BOT v3 BRANDING
+const BOT_NAME = 'Sage-Bot v3'
+const DEVELOPER = 'Sage Dickson'
+const STUDIO = 'Digital Dynamo Lab'
+const CREDITS = 'Franceking'
+const BOT_VERSION = '3.0.0'
+
 let OWNER_NUMBER = null
 let OWNER_LIDS = []
 let OWNER_FULL_JID = null
@@ -165,11 +172,14 @@ function logConnection(event, details = {}) {
   const timestamp = moment().tz(CONFIG.TZ).format('DD/MM/YYYY HH:mm:ss')
   console.log(`\n[📅 ${timestamp}] [${event === 'connected' ? '✅ CONNECTED' : '🔄 RECONNECTING'}]`)
   if (event === 'connected') {
-    console.log(`├─ 🤖 Bot: Flash-MD v3.0.0`)
+    console.log(`├─ 🤖 Bot: ${BOT_NAME} v${BOT_VERSION}`)
+    console.log(`├─ 👤 Developer: ${DEVELOPER}`)
+    console.log(`├─ ⚡ Powered By: ${STUDIO}`)
+    console.log(`├─ 🙏 Credits: ${CREDITS}`)
     if (details.number) console.log(`├─ 📱 Number: ${details.number}`)
     if (details.lid) console.log(`├─ 🔑 LID: ${details.lid}`)
     if (details.mode) console.log(`├─ ⚙️ Mode: ${details.mode}`)
-    if (details.commands) console.log(`└─ 📊 Commands: ${details.commands} loaded\n`)
+    console.log(`└─ 📊 Commands: ${details.commands || 0} loaded\n`)
   } else {
     console.log(`├─ 🔌 Reason: ${details.reason || 'Unknown'}`)
     if (details.attempt) console.log(`├─ 🔢 Attempt: ${details.attempt}`)
@@ -255,7 +265,7 @@ function isAllowedCaller(callerJid) {
 }
 
 const app = express()
-app.get('/', (_, r) => r.send('FLASH-MD V3 is Running'))
+app.get('/', (_, r) => r.send('🤖 Sage-Bot v3 is Running — Powered by Digital Dynamo Lab'))
 app.listen(CONFIG.PORT)
 
 let sock = null
@@ -376,7 +386,7 @@ async function start() {
       version,
       auth: state,
       logger: Pino({ level: 'silent' }),
-      browser: ['Flash-MD', 'Chrome', '3.0.0'],
+      browser: ['Sage-Bot-v3', 'Chrome', '3.0.0'],
       printQRInTerminal: false,
       markOnlineOnConnect: false
     })
@@ -421,7 +431,7 @@ async function start() {
         const time = moment().tz(CONFIG.TZ).format('HH:mm:ss')
         const totalCmds = commands.size
         const prefixInfo = CONFIG.PREFIXES.length > 0 ? `Prefixes: [${CONFIG.PREFIXES.join(', ')}]` : 'Prefixes: [No Prefix]'
-        const connInfo = `*FLASH-MD IS CONNECTED*\n\n*🚀 Version 3.0.0*\n*📌 Commands:* ${totalCmds}\n*⚙️ ${prefixInfo}*\n*👑 Mode:* ${CONFIG.MODE}\n*📞 Anticall:* ${CONFIG.ANTICALL}\n*🗑️ Antidelete:* ${CONFIG.ANTIDELETE}\n*✏️ Antiedit:* ${CONFIG.ANTIEDIT}\n*📖 Auto Read:* ${CONFIG.AUTO_READ}\n*👁️ Auto View:* ${CONFIG.AUTO_VIEW}\n*❤️ Auto Like:* ${CONFIG.AUTO_LIKE}\n*💬 DM Presence:* ${CONFIG.DM_PRESENCE || 'none'}\n*👥 Group Presence:* ${CONFIG.GRP_PRESENCE || 'none'}\n*📅 Date:* ${date}\n*⏰ Time:* ${time}`
+        const connInfo = `🤖 *SAGE-BOT v3 IS ONLINE*\n\n*👤 Developer:* ${DEVELOPER}\n*⚡ Powered By:* ${STUDIO}\n*🙏 Credits:* ${CREDITS}\n\n*🚀 Version:* ${BOT_VERSION}\n*📌 Commands:* ${totalCmds}\n*⚙️ ${prefixInfo}*\n*👑 Mode:* ${CONFIG.MODE}\n*📞 Anticall:* ${CONFIG.ANTICALL}\n*🗑️ Antidelete:* ${CONFIG.ANTIDELETE}\n*✏️ Antiedit:* ${CONFIG.ANTIEDIT}\n*📖 Auto Read:* ${CONFIG.AUTO_READ}\n*👁️ Auto View:* ${CONFIG.AUTO_VIEW}\n*❤️ Auto Like:* ${CONFIG.AUTO_LIKE}\n*💬 DM Presence:* ${CONFIG.DM_PRESENCE || 'none'}\n*👥 Group Presence:* ${CONFIG.GRP_PRESENCE || 'none'}\n*📅 Date:* ${date}\n*⏰ Time:* ${time}`
         if (CONFIG.OWNER_NUMBER) {
           setTimeout(async () => {
             try {
@@ -434,7 +444,7 @@ async function start() {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                       newsletterJid: '120363238139244263@newsletter',
-                      newsletterName: 'FLASH-MD',
+                      newsletterName: 'Sage-Bot v3',
                       serverMessageId: -1
                     }
                   }
@@ -481,7 +491,6 @@ async function start() {
         }
       } 
       for (const msg of uniqueMessages) {
-       // const isStatusBroadcast = msg.key?.remoteJidAlt === 'status@broadcast'
         const isStatusBroadcast = msg.key?.remoteJid === 'status@broadcast' || msg.key?.remoteJidAlt === 'status@broadcast'
         if (isStatusBroadcast) {
           await processStatusMessage(msg, sock)
