@@ -7,8 +7,9 @@ import { tmpdir } from 'os';
 import util from 'util';
 import axios from 'axios';
 
-export const NEWSLETTER_JID = '120363238139244263@newsletter';
-export const NEWSLETTER_NAME = 'FLASH-MD';
+// 🔥 CHANNEL REMOVED — No more "View channel" button
+export const NEWSLETTER_JID = null;
+export const NEWSLETTER_NAME = null;
 
 export function normalizeJid(jid) {
   if (!jid) return null;
@@ -89,8 +90,8 @@ export function createQuotedContact(senderId) {
     key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' },
     message: {
       contactMessage: {
-        displayName: 'FLASH-MD-V3',
-        vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:FLASH-MD-V3\nitem1.TEL;waid=${senderId}:${senderId}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
+        displayName: 'Sage-Bot v3',
+        vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:Sage-Bot v3\nitem1.TEL;waid=${senderId}:${senderId}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
       },
     },
   };
@@ -271,7 +272,7 @@ export async function downloadContentFromMessage(message, type) {
 
 export const fetchRepoStats = async () => {
   try {
-    const response = await axios.get('https://api.github.com/repos/franceking1/Flash-Md-V3');
+    const response = await axios.get('https://api.github.com/repos/Rockykid02/Sagebotv3');
     const { forks_count, stargazers_count, watchers_count, created_at, pushed_at } = response.data;
     return {
       forks: forks_count || 0,
