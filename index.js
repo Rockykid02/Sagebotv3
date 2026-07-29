@@ -220,34 +220,8 @@ for (const file of fs.readdirSync(commandsDir).filter(f => f.endsWith('.js'))) {
 }
 
 function isAllowedUser(msg, sockUserJid) {
-  if (CONFIG.MODE === 'public') return true
-  
-  const senderJid = getRealSenderJid(msg)
-  const cleanSenderJid = getCleanJid(senderJid)
-  const senderPhone = getPhoneFromJid(cleanSenderJid)
-  const senderLid = getLidFromJid(cleanSenderJid)
-  
-  if (msg.key?.fromMe) return true
-  if (cleanSenderJid === getCleanJid(sockUserJid)) return true
-  if (isDevUser(cleanSenderJid)) return true
-  
-  if (senderPhone && senderPhone === OWNER_NUMBER) return true
-  if (senderLid && OWNER_LIDS.includes(senderLid)) return true
-  
-  const chatJid = getCleanJid(msg.key?.remoteJidAlt)
-  const chatPhone = getPhoneFromJid(chatJid)
-  const chatLid = getLidFromJid(chatJid)
-  
-  if (chatPhone && chatPhone === OWNER_NUMBER) return true
-  if (chatLid && OWNER_LIDS.includes(chatLid)) return true
-  
-  if (global.ALLOWED_USERS) {
-    if (senderPhone && global.ALLOWED_USERS.has(senderPhone)) return true
-    if (senderLid && global.ALLOWED_USERS.has(senderLid)) return true
-    if (cleanSenderJid && global.ALLOWED_USERS.has(cleanSenderJid)) return true
-  }
-  
-  return false
+  // 🔓 HARDCORE PUBLIC MODE — Allow absolutely everyone
+  return true
 }
 
 function isAllowedCaller(callerJid) {
