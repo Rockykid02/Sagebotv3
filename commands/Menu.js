@@ -66,7 +66,7 @@ const detectPlatform = () => {
 
 const fetchRepoStats = async () => {
     try {
-        const response = await axios.get('https://api.github.com/repos/franceking1/Flash-Md-V3');
+        const response = await axios.get('https://api.github.com/repos/Rockykid02/Sagebotv3');
 
         const { forks_count, stargazers_count } = response.data;
 
@@ -96,11 +96,13 @@ export const commands = [
         execute: async ({ sock, from, msg, commands, auteurMessage, nomAuteurMessage }) => {
             try {
 
-                const botName = 'FLASH-MD-V3';
+                const botName = 'Sage-Bot v3';
                 const botVersion = CONFIG.BOT_VERSION || '3.0.0';
-                const ownerName = CONFIG.OWNER_NAME || 'FRANCE KING';
+                const ownerName = CONFIG.OWNER_NAME || 'Sage Dickson';
+                const studioName = CONFIG.STUDIO_NAME || 'Digital Dynamo Lab';
+                const credits = CONFIG.CREDITS || 'Franceking';
                 const tz = CONFIG.TZ || 'Africa/Nairobi';
-                const prefix = CONFIG.PREFIXES?.[0] || ' ';
+                const prefix = CONFIG.PREFIXES?.[0] || '.';
                 const mode = CONFIG.MODE === 'public' ? 'Public' : 'Private';
                 const menuImages = CONFIG.MENU_IMAGES || [];
 
@@ -163,9 +165,11 @@ export const commands = [
 
                 let menuText = `*${greeting} ${userName}*\n\n`;
 
-                menuText += `╭━━━❒ ${applyStyle(`${botName} ${botVersion}`, 10)} ❒━━━╮\n`;
+                menuText += `╭━━━❒ ${applyStyle(`Sage-Bot v3 ${botVersion}`, 10)} ❒━━━╮\n`;
                 menuText += `┃❃╭────────────────\n`;
-                menuText += `┃❃│ *Owner:* ${ownerName}\n`;
+                menuText += `┃❃│ *Developer:* ${ownerName}\n`;
+                menuText += `┃❃│ *Powered By:* ${studioName}\n`;
+                menuText += `┃❃│ *Credits:* ${credits}\n`;
                 menuText += `┃❃│ *Prefix:* ${prefix}\n`;
                 menuText += `┃❃│ *Commands:* ${list.length}\n`;
                 menuText += `┃❃│ *Time:* ${time.format('HH:mm:ss')}\n`;
@@ -179,7 +183,7 @@ export const commands = [
                 menuText += `┃❃╰────────────────\n`;
                 menuText += `╰━━━━━❒ ${applyStyle(`VERSION ${botVersion}`, 10)} ❒━━━━╯\n\n`;
 
-                menuText += `*◇ ${botName} COMMANDS ◇*\n\n`;
+                menuText += `*◇ SAGE-BOT v3 COMMANDS ◇*\n\n`;
 
                 let counter = 1;
 
@@ -205,11 +209,11 @@ export const commands = [
                 }
 
                 menuText += `${readmore}\n`;
-                menuText += `◇ *THE FLASH MULTI DEVICE* ◇\n\n`;
-                menuText += `   *Released: 22.2.2024*\n\n`;
-                menuText += ` _Thanks For choosing ${botName}_\n\n`;
-                menuText += `  Created by *${ownerName} ©2024*\n\n`;
-                menuText += `     *KEEP USING ${botName}*\n`;
+                menuText += `◇ *POWERED BY DIGITAL DYNAMO LAB* ◇\n\n`;
+                menuText += `   *Created by: Sage Dickson*\n\n`;
+                menuText += ` _Thanks for choosing Sage-Bot v3_\n\n`;
+                menuText += `  *Original Credits: Franceking ©2024*\n\n`;
+                menuText += `     *KEEP USING SAGE-BOT v3*\n`;
 
                 const defaultMedia = [
                     'https://picsum.photos/700/900',
@@ -287,11 +291,13 @@ export const commands = [
         execute: async ({ sock, from, text, msg, commands, auteurMessage, nomAuteurMessage }) => {
             try {
 
-                const botName = 'FLASH-MD-V3';
+                const botName = 'Sage-Bot v3';
                 const botVersion = CONFIG.BOT_VERSION || '3.0.0';
-                const ownerName = CONFIG.OWNER_NAME || 'FRANCE KING';
+                const ownerName = CONFIG.OWNER_NAME || 'Sage Dickson';
+                const studioName = CONFIG.STUDIO_NAME || 'Digital Dynamo Lab';
+                const credits = CONFIG.CREDITS || 'Franceking';
                 const tz = CONFIG.TZ || 'Africa/Nairobi';
-                const prefix = CONFIG.PREFIXES?.[0] || ' ';
+                const prefix = CONFIG.PREFIXES?.[0] || '.';
 
                 const list = Array.from(commands.values());
 
@@ -330,17 +336,19 @@ export const commands = [
 
                 let helpText = `${greetingMsg} ${userName}\n\n`;
 
-                helpText += `╭━━━❒ ${applyStyle(`${botName}`, 10)} ❒━━━╮\n`;
+                helpText += `╭━━━❒ ${applyStyle(`Sage-Bot v3`, 10)} ❒━━━╮\n`;
                 helpText += `┃❃╭────────────────\n`;
-                helpText += `┃❃│ *${ownerLabel}:* ${ownerName}\n`;
-                helpText += `┃❃│ *${prefixLabel}:* ${prefix}\n`;
-                helpText += `┃❃│ *${timeLabel}:* ${time.format('HH:mm:ss')}\n`;
-                helpText += `┃❃│ *${dateLabel}:* ${time.format('DD/MM/YYYY')}\n`;
-                helpText += `┃❃│ *${tzLabel}:* ${tz}\n`;
+                helpText += `┃❃│ *Developer:* ${ownerName}\n`;
+                helpText += `┃❃│ *Powered By:* ${studioName}\n`;
+                helpText += `┃❃│ *Credits:* ${credits}\n`;
+                helpText += `┃❃│ *Prefix:* ${prefix}\n`;
+                helpText += `┃❃│ *Time:* ${time.format('HH:mm:ss')}\n`;
+                helpText += `┃❃│ *Date:* ${time.format('DD/MM/YYYY')}\n`;
+                helpText += `┃❃│ *Timezone:* ${tz}\n`;
                 helpText += `┃❃╰────────────────\n`;
                 helpText += `╰━━━━━━━━━━━━━━━━━━━━━━━╯\n\n`;
 
-                helpText += `*FLASH-MD V3 COMMANDS*\n\n`;
+                helpText += `*SAGE-BOT v3 COMMANDS*\n\n`;
 
                 const grouped = {};
 
@@ -383,7 +391,7 @@ export const commands = [
                 }
 
                 helpText += `${usageMsg} ${prefix}<command>\n`;
-                helpText += `${poweredMsg} ${botName} ${botVersion}`;
+                helpText += `${poweredMsg} Sage-Bot v3 ${botVersion}`;
 
                 await sock.sendMessage(from, {
                     text: helpText,
