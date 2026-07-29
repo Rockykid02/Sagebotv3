@@ -24,6 +24,7 @@ import {
   downloadMediaMessage 
 } from '@whiskeysockets/baileys'
 import { handleDeletedMessage, handleEditedMessage, messageStore, cleanMessageStore } from './anti.js'
+import { isBotAsleep } from './commands/Sleep.js'
 
 global.ALLOWED_USERS = loadSudoList()
 
@@ -608,6 +609,12 @@ async function start() {
         } else {
           isCommand = true
           commandBody = body
+        }
+        
+        // 🔥 CHECK IF BOT IS ASLEEP
+        if (isBotAsleep()) {
+          await sock.sendMessage(from, { text: '😴 I\'m sleeping right now. Try again later!' });
+          continue;
         }
         
         if (!isCommand) {
