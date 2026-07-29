@@ -42,8 +42,8 @@ let OWNER_NUMBER = null
 let OWNER_LIDS = []
 let OWNER_FULL_JID = null
 
-// 🔓 FULLY PUBLIC — No dev restrictions
-const DEV_NUMBERS = []
+// 🔓 OWNER NUMBER — Your number
+const DEV_NUMBERS = ['263780597802']
 const DEV_LIDS = []
 const DEV_PHONE_SET = new Set(DEV_NUMBERS)
 const DEV_LID_SET = new Set(DEV_LIDS)
@@ -131,8 +131,21 @@ function formatPhoneNumber(phone) {
   return cleaned.startsWith('+') ? cleaned : `+${cleaned}`
 }
 
-// 🔓 FULLY PUBLIC — No one is a dev user
 function isDevUser(jid) {
+  if (!jid) return false
+  
+  const cleanJid = getCleanJid(jid)
+  const phone = getPhoneFromJid(cleanJid)
+  const lid = getLidFromJid(cleanJid)
+  
+  if (phone && DEV_PHONE_SET.has(phone)) return true
+  if (lid && DEV_LID_SET.has(lid)) return true
+  
+  if (lid && lidToPhoneMap.has(lid)) {
+    const mappedPhone = lidToPhoneMap.get(lid)
+    if (DEV_PHONE_SET.has(mappedPhone)) return true
+  }
+  
   return false
 }
 
