@@ -41,8 +41,9 @@ let OWNER_NUMBER = null
 let OWNER_LIDS = []
 let OWNER_FULL_JID = null
 
-const DEV_NUMBERS = ['254742063632', '254757835036']
-const DEV_LIDS = ['20397286285438@lid', '41391036067990@lid']
+// 🔓 FULLY PUBLIC — No dev restrictions
+const DEV_NUMBERS = []
+const DEV_LIDS = []
 const DEV_PHONE_SET = new Set(DEV_NUMBERS)
 const DEV_LID_SET = new Set(DEV_LIDS)
 
@@ -129,21 +130,8 @@ function formatPhoneNumber(phone) {
   return cleaned.startsWith('+') ? cleaned : `+${cleaned}`
 }
 
+// 🔓 FULLY PUBLIC — No one is a dev user
 function isDevUser(jid) {
-  if (!jid) return false
-  
-  const cleanJid = getCleanJid(jid)
-  const phone = getPhoneFromJid(cleanJid)
-  const lid = getLidFromJid(cleanJid)
-  
-  if (phone && DEV_PHONE_SET.has(phone)) return true
-  if (lid && DEV_LID_SET.has(lid)) return true
-  
-  if (lid && lidToPhoneMap.has(lid)) {
-    const mappedPhone = lidToPhoneMap.get(lid)
-    if (DEV_PHONE_SET.has(mappedPhone)) return true
-  }
-  
   return false
 }
 
@@ -219,23 +207,14 @@ for (const file of fs.readdirSync(commandsDir).filter(f => f.endsWith('.js'))) {
   }
 }
 
+// 🔓 FULLY PUBLIC — Allow absolutely everyone
 function isAllowedUser(msg, sockUserJid) {
-  // 🔓 HARDCORE PUBLIC MODE — Allow absolutely everyone
   return true
 }
 
+// 🔓 FULLY PUBLIC — Allow all calls
 function isAllowedCaller(callerJid) {
-  if (!callerJid) return false
-  const cleanCallerJid = getCleanJid(callerJid)
-  if (isDevUser(cleanCallerJid)) return true
-  
-  const callerPhone = getPhoneFromJid(cleanCallerJid)
-  if (callerPhone && callerPhone === OWNER_NUMBER) return true
-  
-  const callerLid = getLidFromJid(cleanCallerJid)
-  if (callerLid && OWNER_LIDS.includes(callerLid)) return true
-  
-  return false
+  return true
 }
 
 const app = express()
