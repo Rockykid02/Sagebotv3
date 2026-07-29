@@ -240,13 +240,7 @@ export const commands = [
                         contextInfo: {
                             mentionedJid: [userName],
                             forwardingScore: 1,
-                            isForwarded: true,
-
-                            forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363238139244263@newsletter',
-                                newsletterName: botName,
-                                serverMessageId: -1
-                            }
+                            isForwarded: true
                         }
 
                     }, { quoted: msg });
@@ -259,13 +253,7 @@ export const commands = [
                         contextInfo: {
                             mentionedJid: [userName],
                             forwardingScore: 1,
-                            isForwarded: true,
-
-                            forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363238139244263@newsletter',
-                                newsletterName: botName,
-                                serverMessageId: -1
-                            }
+                            isForwarded: true
                         }
 
                     }, { quoted: msg });
@@ -399,13 +387,7 @@ export const commands = [
                     contextInfo: {
                         mentionedJid: [userName],
                         forwardingScore: 1,
-                        isForwarded: true,
-
-                        forwardedNewsletterMessageInfo: {
-                            newsletterJid: '120363238139244263@newsletter',
-                            newsletterName: botName,
-                            serverMessageId: -1
-                        }
+                        isForwarded: true
                     }
 
                 }, { quoted: msg });
