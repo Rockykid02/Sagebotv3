@@ -94,22 +94,26 @@ function getCleanJid(jid) {
 }
 
 function getRealSenderJid(msg) {
-  const remoteJid = msg.key?.remoteJidAlt 
-  const participant = msg.key?.participantAlt 
+  const remoteJid = msg.key?.remoteJid
+  const participant = msg.key?.participant
   const fromMe = msg.key?.fromMe
   
-  if (fromMe) {
-    return sock?.user?.id || remoteJid
+  // DM from another user — remoteJid is their JID
+  if (!fromMe && remoteJid && remoteJid.endsWith('@s.whatsapp.net')) {
+    return getCleanJid(remoteJid)
   }
   
+  // Group message with participant
   if (participant) {
     return getCleanJid(participant)
   }
   
-  if (remoteJid && remoteJid.includes('@g.us')) {
-    return getCleanJid(participant || remoteJid)
+  // Message from the bot itself
+  if (fromMe) {
+    return sock?.user?.id || remoteJid
   }
   
+  // Fallback for any other case
   return getCleanJid(remoteJid)
 }
 
