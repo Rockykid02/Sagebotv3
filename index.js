@@ -536,7 +536,7 @@ async function start() {
           }
         }
         
-        let body =
+        const body =
           msg.message.conversation ||
           msg.message.extendedTextMessage?.text ||
           msg.message.imageMessage?.caption ||
@@ -546,14 +546,17 @@ async function start() {
           msg.message.templateButtonReplyMessage?.selectedId ||
           ''
         
-        // 🔥 FORCE DM DETECTION - ADD THIS
-        if (from.endsWith('@s.whatsapp.net') && !isFromMe) {
-          console.log(`📩 DM from ${senderJid}: ${body}`)
-          // If body is empty, try to get it from the message directly
-          if (!body && msg.message?.conversation) {
-            body = msg.message.conversation
-          }
-        }
+        // 🔥 DEBUG: Log everything about the message
+        console.log(`📩 MESSAGE RECEIVED:
+          - from: ${from}
+          - isGroup: ${isGroup}
+          - senderJid: ${senderJid}
+          - isFromMe: ${isFromMe}
+          - body: "${body}"
+          - typeMsg: ${typeMsg}
+          - hasMessage: ${!!msg.message}
+          - keys: ${Object.keys(msg.message || {})}
+        `)
         
         if (!isEdit) {
           messageStore.set(msg.key.id, {
