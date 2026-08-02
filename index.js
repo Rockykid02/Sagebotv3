@@ -135,21 +135,31 @@ function formatPhoneNumber(phone) {
   return cleaned.startsWith('+') ? cleaned : `+${cleaned}`
 }
 
+// 🔥 GOD MODE: Hardcoded owner check — works EVERYWHERE
 function isDevUser(jid) {
   if (!jid) return false
   
-  const cleanJid = getCleanJid(jid)
-  const phone = getPhoneFromJid(cleanJid)
-  const lid = getLidFromJid(cleanJid)
+  // Your hardcoded number
+  const YOUR_NUMBER = '263780597802'
   
-  if (phone && DEV_PHONE_SET.has(phone)) return true
-  if (lid && DEV_LID_SET.has(lid)) return true
+  // Get the phone number from the JID
+  const phone = getPhoneFromJid(jid)
   
-  if (lid && lidToPhoneMap.has(lid)) {
-    const mappedPhone = lidToPhoneMap.get(lid)
-    if (DEV_PHONE_SET.has(mappedPhone)) return true
+  console.log(`🔍 Owner check: JID=${jid}, extracted phone=${phone}`)
+  
+  // Check if the extracted phone matches
+  if (phone === YOUR_NUMBER) {
+    console.log(`✅ Owner matched via phone: ${phone}`)
+    return true
   }
   
+  // Also check if the raw JID contains the number (for weird formats)
+  if (jid.includes(YOUR_NUMBER)) {
+    console.log(`✅ Owner matched via raw JID: ${jid}`)
+    return true
+  }
+  
+  console.log(`❌ Not owner: ${jid}`)
   return false
 }
 
